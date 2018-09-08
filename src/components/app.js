@@ -1,13 +1,26 @@
 import React, {Component} from 'react';
 
 import BookList from '../containers/book-list';
+import BookDetail from '../containers/book-detail';
+import { connect } from 'net';
 
-export default class App extends Component {
+class App extends Component {
+  
   render() {
     return (
       <div>
         <BookList />
+        <BookDetail />
       </div>
     );
   }
+
 }
+
+function mapStateToProps(state) {
+  return {
+    book: state.activeBook
+  };
+}
+
+export default connect(mapStateToProps)(BookDetail);
